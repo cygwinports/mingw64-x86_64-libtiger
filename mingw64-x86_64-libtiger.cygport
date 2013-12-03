@@ -1,0 +1,22 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-libtiger"
+VERSION=0.3.4
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="OggKate rendering library for Win64 toolchain"
+DESCRIPTION="libtiger is a rendering library for OggKate streams using Pango
+and Cairo."
+HOMEPAGE="http://wiki.xiph.org/index.php/OggKate"
+SRC_URI="http://libtiger.googlecode.com/files/libtiger-${VERSION}.tar.gz"
+SRC_DIR="libtiger-${VERSION}"
+
+DISTCLEANFILES="doc/Makefile doc/tiger.doxygen"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	rm -fr ${D}/usr/share/doc/${NAME}/html/
+}
